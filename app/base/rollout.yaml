@@ -34,24 +34,10 @@ spec:
     spec:
       containers:
       - name: app
-        env:
-        - name: TEST
-          value: TEST_VALUE
-        - name: APP_DOMAIN
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: APP_DOMAIN
-        - name: API_DOMAIN
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: API_DOMAIN
-        - name: API_BASE_URL
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: API_BASE_URL
+        volumeMounts:
+          - name: mnt
+            mountPath: /app/env_settings.py
+            subPath: env_settings
         ports:
         - name: http
           containerPort: 8000
@@ -60,3 +46,7 @@ spec:
           requests:
             memory: 32Mi
             cpu: 5m
+      volumes:
+      - name: mnt
+        configMap:
+          name: infra-dashboard-api-configmap
