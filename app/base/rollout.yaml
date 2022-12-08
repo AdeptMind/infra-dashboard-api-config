@@ -34,6 +34,7 @@ spec:
     spec:
       containers:
       - name: app
+        image: gcr.io/retail-364515/infra-dashboard-api
         volumeMounts:
           - name: mnt
             mountPath: /app/env_settings.py
