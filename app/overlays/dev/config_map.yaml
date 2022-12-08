@@ -4,6 +4,5 @@ metadata:
   name: infra-dashboard-api-configmap
   namespace: infra-dashboard-api-dev
 data:
-  env_settings: |-
-    APP_DOMAIN="http://34.132.22.77:9090"
-    API_DOMAIN="http://35.239.39.184:8000"    
+  APP_DOMAIN: http://34.132.22.77:9090
+  API_DOMAIN: http://35.239.39.184:8000
