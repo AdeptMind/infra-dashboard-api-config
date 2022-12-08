@@ -35,6 +35,8 @@ spec:
       containers:
       - name: app
         env:
+        - name: TEST
+          value: TEST_VALUE
         - name: APP_DOMAIN
           valueFrom:
             configMapKeyRef:
