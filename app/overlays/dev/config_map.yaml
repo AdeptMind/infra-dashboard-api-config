@@ -6,3 +6,4 @@ metadata:
 data:
   APP_DOMAIN: http://34.132.22.77:9090
   API_DOMAIN: http://35.239.39.184:8000
+  ALLOWED_HOSTS: "35.239.39.184"
