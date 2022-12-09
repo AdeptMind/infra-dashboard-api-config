@@ -35,22 +35,9 @@ spec:
       containers:
       - name: app
         image: gcr.io/retail-364515/infra-dashboard-api
-        env:
-        - name: APP_DOMAIN
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: APP_DOMAIN
-        - name: API_DOMAIN
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: API_DOMAIN
-        - name: ALLOWED_HOSTS
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: ALLOWED_HOSTS
+        volumeMounts:
+          - name: config-volume
+            mountPath: /app/env_settings.py
         ports:
         - name: http
           containerPort: 8000
@@ -59,3 +46,7 @@ spec:
           requests:
             memory: 32Mi
             cpu: 5m
+      volumes:
+        - name: config-volume
+          configMap:
+            name: infra-dashboard-api-configmap
