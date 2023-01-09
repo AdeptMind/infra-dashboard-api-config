@@ -71,6 +71,11 @@ spec:
             configMapKeyRef:
               name: infra-dashboard-api-configmap
               key: DB_PASSWORD
+        - name: GIT_TOKEN
+          valueFrom:
+            configMapKeyRef:
+              name: infra-dashboard-api-configmap
+              key: GIT_TOKEN
         ports:
         - name: http
           containerPort: 8000
