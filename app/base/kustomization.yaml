@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - rollout.yaml
 - service.yaml
-- postgres
+- postgresql
