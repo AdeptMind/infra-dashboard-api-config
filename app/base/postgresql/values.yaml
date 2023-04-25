@@ -1,0 +1,6 @@
+global:
+  postgresql:
+    auth:
+      username: admin
+      password: 'how-ab0ut_a(dummy|P@ssword'
+      database: postgresql
