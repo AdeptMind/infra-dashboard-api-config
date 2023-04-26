@@ -11,18 +11,17 @@ spec:
   gateways:
     - api
   http:
-    - name: first-app
-      route:
-        - destination:
-            host: first-app
-            subset: v1
-          weight: 90
-        - destination:
-            host: first-app
-            subset: v2
-          weight: 10
-    - name: http-primary
-      route:
+    # - name: first-app
+    #   route:
+    #     - destination:
+    #         host: first-app
+    #         subset: v1
+    #       weight: 90
+    #     - destination:
+    #         host: first-app
+    #         subset: v2
+    #       weight: 10
+    - route:
       - destination:
           host: rollouts-demo-stable  # Should match rollout.spec.strategy.canary.stableService
           port:
