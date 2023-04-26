@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: infra-dashboard-api-svc
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: app
   ports:
@@ -45,7 +45,7 @@ spec:
   gateways:
   - istio-rollout-gateway
   hosts:
-  - app.infra-dashboard-api.api.adeptmind.net
+  - api.infra.adeptmind.net
   http:
   - name: primary
     route:
