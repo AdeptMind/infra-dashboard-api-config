@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: app
+    app: search-adapter
   ports:
   - port: 8000
     protocol: TCP
