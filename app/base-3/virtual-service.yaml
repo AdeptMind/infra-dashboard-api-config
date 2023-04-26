@@ -6,8 +6,8 @@ spec:
   gateways:
   - istio-rollout-gateway
   hosts:
-  - istio-rollout.apps.argoproj.io
-  - istio-rollout.local
+  - api.on-boarding.infra.adeptmind.net
+  - istio-rollout
   http:
   - name: primary
     route:
