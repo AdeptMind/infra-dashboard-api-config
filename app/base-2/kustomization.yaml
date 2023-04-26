@@ -7,3 +7,4 @@ resources:
 - destination-rule.yaml
 - myapp-service.yaml
 - virtual-service.yaml
+- gateway.yaml

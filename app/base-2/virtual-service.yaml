@@ -5,7 +5,10 @@ metadata:
   name: first-app
 spec:
   hosts:
+    - api.on-boarding.infra.adeptmind.net
     - first-app
+  gateways:
+    - api
   http:
     - route:
         - destination:
