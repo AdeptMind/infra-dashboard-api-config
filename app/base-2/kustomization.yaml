@@ -6,5 +6,4 @@ resources:
 - deployment-v2.yaml
 - destination-rule.yaml
 - myapp-service.yaml
-- namespace.yaml
 - virtual-service.yaml
