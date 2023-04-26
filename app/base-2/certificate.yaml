@@ -9,6 +9,6 @@ spec:
   dnsNames:
     - api.on-boarding.infra.adeptmind.net
   issuerRef:
-    name: staging-cluster-issuer
+    name: production-cluster-issuer
     kind: ClusterIssuer
     group: cert-manager.io
