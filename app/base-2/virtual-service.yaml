@@ -24,12 +24,12 @@ spec:
     - name: http-primary
       route:
       - destination:
-        host: rollouts-demo-stable  # Should match rollout.spec.strategy.canary.stableService
-        port:
-          number: 15372
+          host: rollouts-demo-stable  # Should match rollout.spec.strategy.canary.stableService
+          port:
+            number: 15372
         weight: 100
       - destination:
-        host: rollouts-demo-canary  # Should match rollout.spec.strategy.canary.canaryService
-        port:
-          number: 15372
+          host: rollouts-demo-canary  # Should match rollout.spec.strategy.canary.canaryService
+          port:
+            number: 15372
         weight: 0
