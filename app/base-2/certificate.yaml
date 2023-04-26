@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: api-devopsbyexample-com
+  namespace: istio-ingress
+spec:
+  secretName: api-devopsbyexample-com-crt
+  dnsNames:
+    - api.on-boarding.infra.adeptmind.net
+  issuerRef:
+    name: staging-cluster-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io

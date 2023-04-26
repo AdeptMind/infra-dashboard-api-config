@@ -8,3 +8,4 @@ resources:
 - myapp-service.yaml
 - virtual-service.yaml
 - gateway.yaml
+- certificate.yaml
