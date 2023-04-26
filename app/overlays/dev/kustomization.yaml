@@ -5,7 +5,7 @@ resources:
 - ../../base-3
 images:
 - name: argoproj/rollouts-demo
-  newTag: 'red'
+  newTag: 'blue'
 
 # - ingress.yaml
 # - deployment.yaml
