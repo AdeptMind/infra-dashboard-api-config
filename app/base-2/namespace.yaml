@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: staging
+  name: infra-dashboard-api-dev
   labels:
     monitoring: prometheus
     istio-injection: enabled
