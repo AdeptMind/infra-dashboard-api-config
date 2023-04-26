@@ -3,6 +3,10 @@ kind: Kustomization
 namespace: infra-dashboard-api-dev
 resources:
 - ../../base-3
+images:
+- name: argoproj/rollouts-demo
+  newTag: 'red'
+
 # - ingress.yaml
 # - deployment.yaml
 
