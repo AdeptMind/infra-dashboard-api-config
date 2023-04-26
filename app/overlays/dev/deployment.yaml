@@ -13,6 +13,7 @@ spec:
       labels:
         app: search-adapter
     spec:
+      containers:
       - name: app
         image: gcr.io/retail-364515/infra-dashboard-api:e3f3681aae51071118f390dbb96c6520e1795a22
         env:
