@@ -7,10 +7,12 @@ spec:
   hosts:
     - api.on-boarding.infra.adeptmind.net
     - first-app
+    - rollouts-demo-vsvc1.local
   gateways:
     - api
   http:
-    - route:
+    - name: first-app
+      route:
         - destination:
             host: first-app
             subset: v1
@@ -19,3 +21,15 @@ spec:
             host: first-app
             subset: v2
           weight: 10
+    - name: http-primary
+      route:
+        - destination:
+          host: rollouts-demo-stable  # Should match rollout.spec.strategy.canary.stableService
+          port:
+            number: 15372
+          weight: 100
+        - destination:
+            host: rollouts-demo-canary  # Should match rollout.spec.strategy.canary.canaryService
+            port:
+              number: 15372
+          weight: 0

@@ -3,8 +3,6 @@ apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
   name: api
-  annotations:
-    cert-manager.io/issuer: staging-cluster-issuer
 spec:
   selector:
     istio: gateway

@@ -9,3 +9,4 @@ resources:
 - virtual-service.yaml
 - gateway.yaml
 - certificate.yaml
+- rollout.yaml
