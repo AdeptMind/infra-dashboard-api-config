@@ -14,7 +14,7 @@ spec:
         app: search-adapter
     spec:
       - name: app
-        image: gcr.io/retail-364515/infra-dashboard-api
+        image: gcr.io/retail-364515/infra-dashboard-api:e3f3681aae51071118f390dbb96c6520e1795a22
         env:
         - name: APP_DOMAIN
           valueFrom:
