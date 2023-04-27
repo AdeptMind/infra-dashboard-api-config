@@ -5,4 +5,4 @@ resources:
 - services.yaml
 - virtual-service.yaml
 - rollout.yaml
-# - postgresql
+- postgresql
