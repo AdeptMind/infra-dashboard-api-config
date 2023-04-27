@@ -1,86 +1,56 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: app
+  name: istio-rollout
 spec:
   replicas: 2
-  strategy:
-    canary:
-      canaryService: infra-dashboard-api-canary
-      stableService: infra-dashboard-api-stable
-      trafficRouting:
-        istio:
-          virtualService:
-            name: infra-dashboard-api-vsvc
-            routes:
-            - primary
-      steps:
-      - setWeight: 20
-      - pause: {}
-      - setWeight: 40
-      - pause: {duration: 20}
-      - setWeight: 60
-      - pause: {duration: 20}
-      - setWeight: 80
-      - pause: {duration: 20}
-  revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: app
+      app: istio-rollout
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
       labels:
-        app: app
+        app: istio-rollout
     spec:
       containers:
-      - name: app
-        image: gcr.io/retail-364515/infra-dashboard-api
-        env:
-        - name: APP_DOMAIN
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: APP_DOMAIN
-        - name: API_DOMAIN
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: API_DOMAIN
-        - name: ALLOWED_HOSTS
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: ALLOWED_HOSTS
-        - name: DB_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: DB_HOST
-        - name: DB_NAME
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: DB_NAME
-        - name: DB_USER
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: DB_USER
-        - name: DB_PASSWORD
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: DB_PASSWORD
-        - name: GIT_TOKEN
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-api-configmap
-              key: GIT_TOKEN
+      - name: istio-rollout
+        image: argoproj/rollouts-demo:blue
         ports:
         - name: http
-          containerPort: 8000
+          containerPort: 8080
           protocol: TCP
         resources:
           requests:
             memory: 32Mi
             cpu: 5m
+  strategy:
+    canary:
+      canaryService: istio-rollout-canary
+      stableService: istio-rollout-stable
+      trafficRouting:
+        istio:
+          virtualService:
+            name: istio-rollout-vsvc
+            routes:
+            - primary
+      steps:
+      - setWeight: 10
+      - pause: {}         # pause indefinitely
+      - setWeight: 20
+      - pause: {duration: 10s}
+      - setWeight: 30
+      - pause: {duration: 10s}
+      - setWeight: 40
+      - pause: {duration: 10s}
+      - setWeight: 50
+      - pause: {duration: 10s}
+      - setWeight: 60
+      - pause: {duration: 10s}
+      - setWeight: 70
+      - pause: {duration: 10s}
+      - setWeight: 80
+      - pause: {duration: 10s}
+      - setWeight: 90
+      - pause: {duration: 10s}
