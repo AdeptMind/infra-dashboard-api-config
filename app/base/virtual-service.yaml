@@ -6,7 +6,6 @@ spec:
   gateways:
   - istio-rollout-gateway
   hosts:
-  - api.on-boarding.infra.adeptmind.net
   - infra-onboarding-api.adeptmind.net
   - app
   http:
