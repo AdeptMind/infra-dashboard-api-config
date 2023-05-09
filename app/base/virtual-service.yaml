@@ -4,7 +4,7 @@ metadata:
   name: app-vsvc
 spec:
   gateways:
-  - istio-rollout-gateway
+  - app-gateway
   hosts:
   - infra-onboarding-api.adeptmind.net
   - app
